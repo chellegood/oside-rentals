@@ -293,7 +293,6 @@ section[id]{scroll-margin-top:16px}
   .nbhd .places{grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr))}
   .unit{grid-template-columns:minmax(0,1fr)}
   .unit-left{position:static}
-  .unit-left .host{display:none}
   .cover{aspect-ratio:4/3}
 }
 @media (max-width:720px){
