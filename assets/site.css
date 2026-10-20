@@ -109,7 +109,7 @@ a.hero-meta:hover{color:#fff;border-bottom-color:rgba(255,255,255,.7)}
 .hc-price small{font-size:13px;font-weight:400;color:var(--muted)}
 
 /* faq */
-.faq{overflow:hidden;max-width:720px}
+.faq{overflow:hidden;max-width:calc(100% - 320px)}
 .faq details+details{border-top:1px solid var(--line)}
 .faq summary{cursor:pointer;list-style:none;padding:14px 18px;display:flex;justify-content:space-between;gap:16px;align-items:center;font-weight:500}
 .faq summary::-webkit-details-marker{display:none}
@@ -118,7 +118,7 @@ a.hero-meta:hover{color:#fff;border-bottom-color:rgba(255,255,255,.7)}
 .faq details p{padding:0 18px 16px;color:var(--ink-2);max-width:62ch}
 
 /* contact */
-.contact{padding-block:48px 56px}
+.contact{padding-block:36px 56px}
 .contact-wrap{display:grid;grid-template-columns:minmax(0,1fr) 280px;gap:40px;align-items:start}
 .form-card .card-body{display:grid;gap:14px}
 .form{display:grid;gap:12px}
@@ -134,6 +134,7 @@ a.hero-meta:hover{color:#fff;border-bottom-color:rgba(255,255,255,.7)}
 .form-status.err{background:#fbefec;color:#7c2e22}
 .host{display:grid;gap:12px}
 .host .label{padding-bottom:8px;border-bottom:1px solid var(--line)}
+.contact-side .host{padding-top:10px}
 .host-row{display:flex;align-items:center;gap:12px}
 .host-row b{display:block;font-weight:500}
 .host-row div span{display:block;font-size:13px;color:var(--muted)}
@@ -215,9 +216,9 @@ a.hero-meta:hover{color:#fff;border-bottom-color:rgba(255,255,255,.7)}
 .also:hover{border-color:var(--line-2)}
 
 /* neighborhood tabs */
-.tabs{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);margin-bottom:18px;-webkit-overflow-scrolling:touch}
+.tabs{display:flex;gap:22px;overflow-x:auto;scrollbar-width:none;border-bottom:1px solid var(--line);margin-bottom:18px;-webkit-overflow-scrolling:touch}
 .tabs::-webkit-scrollbar{display:none}
-.tab{flex:none;display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:14px;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:10px 10px 11px;margin-bottom:-1px;cursor:pointer;white-space:nowrap}
+.tab{flex:none;display:inline-flex;align-items:center;gap:7px;font:inherit;font-size:14px;color:var(--muted);background:none;border:0;border-bottom:2px solid transparent;padding:10px 0 11px;margin-bottom:-1px;cursor:pointer;white-space:nowrap}
 .tab i{width:7px;height:7px;border-radius:50%;background:var(--c)}
 .tab:hover{color:var(--ink)}
 .tab[aria-selected="true"]{color:var(--ink);font-weight:500;border-bottom-color:var(--ink)}
@@ -283,6 +284,8 @@ section[id]{scroll-margin-top:16px}
 /* responsive */
 @media (max-width:900px){
   .home-grid,.contact-wrap{grid-template-columns:minmax(0,1fr)}
+  .faq{max-width:none}
+  .contact-side .host{padding-top:0}
   .homes{grid-template-columns:minmax(0,1fr)}
   .side-card{padding-top:0;max-width:520px}
   .nbhd{grid-template-columns:minmax(0,1fr)}
