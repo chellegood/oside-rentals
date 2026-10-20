@@ -8,7 +8,7 @@
 <meta property="og:title" content="1821 S Ditmar Rental Listings">
 <meta property="og:description" content="A 2 bed / 2 bath ($4,500/mo) and a studio ($2,500/mo) in South Oceanside, a short walk to the beach.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="https://oside-rentals.pages.dev/photos/01.jpg">
+<meta property="og:image" content="https://oside-rentals.pages.dev/01.jpg">
 <style>
 :root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0}
@@ -267,7 +267,7 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
   <div id="homeView">
     <div class="cards">
       <a class="card" href="#twobed">
-        <div class="card-img"><img src="photos/01.jpg" alt="Kitchen and dining area of the 2 bed / 2 bath"></div>
+        <div class="card-img"><img src="01.jpg" alt="Kitchen and dining area of the 2 bed / 2 bath"></div>
         <div class="card-body">
           <div class="card-top"><span class="label">Unit #1</span><span class="label">Available Jan 14, 2027</span></div>
           <h2>2 bed / 2 bath</h2>
@@ -278,7 +278,7 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
         </div>
       </a>
       <a class="card" href="#studio">
-        <div class="card-img"><img src="photos/studio/s01.jpg" alt="Living area of the studio with garden views"></div>
+        <div class="card-img"><img src="studio/s01.jpg" alt="Living area of the studio with garden views"></div>
         <div class="card-body">
           <div class="card-top"><span class="label">Unit #2</span><span class="label">Available Dec 1, 2026</span></div>
           <h2>Studio</h2>
@@ -569,7 +569,7 @@ footer{border-top:1px solid var(--line);padding-block:24px 40px;color:var(--mute
   </div>
 
   <a class="also" id="alsoCard" href="#studio">
-    <img id="alsoImg" src="photos/studio/s01.jpg" alt="">
+    <img id="alsoImg" src="studio/s01.jpg" alt="">
     <div><span class="label">Also available at this address</span><b id="alsoTitle">Studio · $2,500/mo</b><span class="muted" id="alsoSub">Unit #2 · Available Dec 1, 2026</span></div>
     <span class="card-cta" aria-hidden="true">View →</span>
   </a>
@@ -599,11 +599,11 @@ const UNIT_PHOTOS={twobed:[
   ["05","Living room"],["06","Dining area"],["07","Hallway desk nook + storage closet"],["08","Bathroom"],
   ["09","Laundry"],["10","Primary bedroom"],["11","Primary bedroom and ensuite"],["12","Second bedroom"],
   ["13","Patio"],["14","Patio and yard"],["15","Yard"],["16","Patio"]
-].map(([id,c])=>[`photos/${id}.jpg`,c]),
+].map(([id,c])=>[`${id}.jpg`,c]),
 studio:[
   ["s01","Living area with garden views"],["s02","Living area"],["s03","Bed and desk area"],["s04","Kitchen"],
   ["s05","Bathroom"],["s06","Private yard with lemon tree"],["s07","Side yard and entrance"]
-].map(([id,c])=>[`photos/studio/${id}.jpg`,c])};
+].map(([id,c])=>[`studio/${id}.jpg`,c])};
 let PHOTOS=UNIT_PHOTOS.twobed;
 const src=p=>p;
 
@@ -630,8 +630,8 @@ function buildGallery(){
 gal.addEventListener('scroll',()=>{const i=Math.round(gal.scrollLeft/gal.clientWidth);pill.textContent=`${i+1} / ${PHOTOS.length}`},{passive:true});
 document.getElementById('seeAll').addEventListener('click',()=>openLb(0));
 const UNITS={
-  twobed:{crumb:"Unit #1 · 2 bed / 2 bath",other:"studio",title:"Studio · $2,500/mo",sub:"Unit #2 · Available Dec 1, 2026",img:"photos/studio/s01.jpg"},
-  studio:{crumb:"Unit #2 · Studio",other:"twobed",title:"2 bed / 2 bath · $4,500/mo",sub:"Unit #1 · Available Jan 14, 2027",img:"photos/01.jpg"}
+  twobed:{crumb:"Unit #1 · 2 bed / 2 bath",other:"studio",title:"Studio · $2,500/mo",sub:"Unit #2 · Available Dec 1, 2026",img:"studio/s01.jpg"},
+  studio:{crumb:"Unit #2 · Studio",other:"twobed",title:"2 bed / 2 bath · $4,500/mo",sub:"Unit #1 · Available Jan 14, 2027",img:"01.jpg"}
 };
 const homeView=document.getElementById('homeView'),listingView=document.getElementById('listingView');
 let shownUnit=null;
