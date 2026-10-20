@@ -1,7 +1,7 @@
 /* Oside Rentals site script: menu, gallery + lightbox, neighborhood map, tour form */
 
 /* ===== Contact form: paste your Formspree form ID between the quotes (e.g. "xyzabcd") ===== */
-const FORMSPREE_ID = "";
+const FORMSPREE_ID = "myekaowy";
 
 /* Old #studio / #twobed links -> new pages */
 (function(){
@@ -135,7 +135,7 @@ const FORMSPREE_ID = "";
     btn.disabled=true;const label=btn.textContent;btn.textContent='Sending…';
     try{
       const r=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
-      if(r.ok){form.reset();say("Thanks, your message was sent. I'll get back to you soon.",true)}
+      if(r.ok){form.reset();say("Thanks, your message was sent. We'll get back to you soon.",true)}
       else say('Something went wrong sending your message. Please try again, or text or email us directly.',false);
     }catch(err){say('Your message could not be sent. Check your connection and try again, or text or email us directly.',false)}
     btn.disabled=false;btn.textContent=label;
