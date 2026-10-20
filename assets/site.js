@@ -3,6 +3,20 @@
 /* ===== Contact form: paste your Formspree form ID between the quotes (e.g. "xyzabcd") ===== */
 const FORMSPREE_ID = "myekaowy";
 
+/* ===== Lead source: remember where a visitor first came from, sent along with the form ===== */
+/* Share links like osiderentals.com/?from=instagram to label a source; the tag is removed from the address bar after load. */
+const SOURCE=(function(){
+  const q=new URLSearchParams(location.search),tag=(q.get('from')||q.get('utm_source')||'').trim().slice(0,40);
+  let ref='';try{if(document.referrer){const h=new URL(document.referrer).hostname.replace(/^www\./,'');if(h!==location.hostname.replace(/^www\./,''))ref=h}}catch(e){}
+  let s=null;try{s=JSON.parse(localStorage.getItem('leadSource'))}catch(e){}
+  if(!s||(tag&&!s.tagged)){
+    s={from:tag||ref||'direct (typed, bookmark, or a text/app that hides links)',tagged:!!tag,page:location.pathname,date:new Date().toISOString().slice(0,10)};
+    try{localStorage.setItem('leadSource',JSON.stringify(s))}catch(e){}
+  }
+  if(tag){q.delete('from');q.delete('utm_source');const qs=q.toString();history.replaceState(null,'',location.pathname+(qs?'?'+qs:'')+location.hash)}
+  return s;
+})();
+
 /* Old #studio / #twobed links -> new pages */
 (function(){
   const h=(location.hash||'').slice(1);
@@ -134,7 +148,9 @@ const FORMSPREE_ID = "myekaowy";
     if(!FORMSPREE_ID){say("Online messages aren't set up yet. Please call, text, or email using the contact details on this page.",false);return}
     btn.disabled=true;const label=btn.textContent;btn.textContent='Sending…';
     try{
-      const r=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',body:new FormData(form),headers:{Accept:'application/json'}});
+      const fd=new FormData(form);
+      fd.append('Came from',SOURCE.from);fd.append('First page',SOURCE.page);fd.append('First visit',SOURCE.date);fd.append('Sent from',location.pathname);
+      const r=await fetch('https://formspree.io/f/'+FORMSPREE_ID,{method:'POST',body:fd,headers:{Accept:'application/json'}});
       if(r.ok){form.reset();say("Thanks, your message was sent. We'll get back to you soon.",true)}
       else say('Something went wrong sending your message. Please try again, or text or email us directly.',false);
     }catch(err){say('Your message could not be sent. Check your connection and try again, or text or email us directly.',false)}
