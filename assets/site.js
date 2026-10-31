@@ -157,3 +157,10 @@ const SOURCE=(function(){
     btn.disabled=false;btn.textContent=label;
   });
 })();
+
+/* Listing pages always open at the top (some viewers keep the previous page's scroll position) */
+(function(){
+  if(document.body.dataset.page!=='unit'||location.hash)return;
+  const top=()=>window.scrollTo(0,0);
+  top(); window.addEventListener('load',top,{once:true});
+})();
